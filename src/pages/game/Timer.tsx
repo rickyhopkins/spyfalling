@@ -14,9 +14,6 @@ export const Timer = ({ game: { state, timeRemaining, timerStarted, settings } }
 			case GameStates.PENDING:
 				return settings.gameLength;
 			case GameStates.PLAYING:
-				console.log(new Date().getTime());
-				console.log(timerStarted);
-				console.log(timeRemaining);
 				return timerStarted + timeRemaining - new Date().getTime();
 			default:
 				return timeRemaining;

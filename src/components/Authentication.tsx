@@ -11,7 +11,6 @@ export const Authentication: React.FunctionComponent = ({ children }) => {
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
-		console.log(token);
 		if (token) {
 			setUser(jwtDecode<{ user: User }>(token).user);
 		}

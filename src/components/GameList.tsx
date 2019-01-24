@@ -6,7 +6,6 @@ import { Queries } from "../gql";
 
 export const GameList = () => {
 	const res = useQuery<{ openGames: any[] }>(Queries.OPEN_GAMES);
-	console.log(res);
 
 	const { data } = res;
 
