@@ -12,7 +12,7 @@ export enum GameStates {
 export interface IPlayer {
 	_id: string;
 	name: string;
-	photoURL: string;
+	avatar: string;
 	confirmed: boolean;
 	role: string;
 }

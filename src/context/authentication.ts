@@ -3,12 +3,12 @@ import React from "react";
 export interface User {
 	_id: string;
 	name: string;
-	photoURL: string;
+	avatar: string;
 }
 
 export interface UserProfile {
 	displayName?: User["name"];
-	photoURL?: User["photoURL"];
+	avatar?: User["avatar"];
 }
 
 interface Authentication {

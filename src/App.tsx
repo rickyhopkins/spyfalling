@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Authentication } from "./components/Authentication";
 import { Nav } from "./components/Nav";
 import { ThemeProvider } from "./styles/styled-components";
-import { Sprites } from "./components/ui/icon/Sprites";
 import "typeface-roboto";
 import { createMuiTheme, CssBaseline, MuiThemeProvider } from "@material-ui/core";
 import { deepOrange } from "@material-ui/core/colors";
@@ -73,7 +72,6 @@ export const App = () => {
 						<Router>
 							<Authentication>
 								<div>
-									<Sprites />
 									<Nav />
 									<Route exact path={"/:gameId"} component={Game} />
 									<Route exact path={"/"} component={Dashboard} />

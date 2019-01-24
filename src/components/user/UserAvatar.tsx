@@ -24,7 +24,7 @@ import scream from "../../assets/Scream.png";
 import { User } from "../../context/authentication";
 
 interface IProps {
-	user: Pick<User, "name" | "photoURL">;
+	user: Pick<User, "name" | "avatar">;
 }
 
 export enum Avatars {
@@ -50,8 +50,8 @@ export enum Avatars {
 	SCREAM = "SCREAM",
 }
 
-const getSrc = (photoUrl: string | null) => {
-	switch (photoUrl) {
+const getSrc = (avatar: string | null) => {
+	switch (avatar) {
 		case Avatars.CLOWN:
 			return clown;
 		case Avatars.DEALER:
@@ -93,10 +93,10 @@ const getSrc = (photoUrl: string | null) => {
 		case Avatars.SCREAM:
 			return scream;
 		default:
-			return photoUrl || lego;
+			return avatar || lego;
 	}
 };
 
 export const UserAvatar = ({ user }: IProps) => {
-	return <Avatar alt={user.name || "Anonymous"} src={getSrc(user.photoURL)} />;
+	return <Avatar alt={user.name || "Anonymous"} src={getSrc(user.avatar)} />;
 };
