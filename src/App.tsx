@@ -26,7 +26,7 @@ const theme = createMuiTheme({
 const httpBase = new HttpLink({ uri: "https://spyfalling-server.herokuapp.com/graphql" });
 
 const wsBase = new WebSocketLink({
-	uri: "ws://spyfalling-server.herokuapp.com/graphql",
+	uri: "wss://spyfalling-server.herokuapp.com/graphql",
 	options: {
 		reconnect: false,
 		connectionParams: { authorization: localStorage.getItem("token") || null },
