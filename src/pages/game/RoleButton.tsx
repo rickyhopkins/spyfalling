@@ -4,6 +4,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { IGame } from "../../models/Game";
 import { useContext } from "react";
 import AuthenticationContext from "../../context/authentication";
+import { isSpy } from "../../util/GameHelpers";
 
 interface IProps {
 	game: IGame;
@@ -16,9 +17,8 @@ export const RoleButton = ({ game }: IProps) => {
 	if (!user) return <React.Fragment />;
 
 	const player = game.players.find(({ player }) => player._id === user._id);
-	console.log(player);
 
-	const location = user._id === game.spy ? "You are the spy, figure it out" : game.location;
+	const location = isSpy(game, user) ? "You are the spy, figure it out" : game.location;
 	const role = player ? player.gameRole : "You are not even playing!";
 
 	return (

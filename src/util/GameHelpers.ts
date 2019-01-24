@@ -15,3 +15,9 @@ export const isAdmin = (game: IGame, user: User) => {
 
 	return registration && registration.role === Roles.ADMIN;
 };
+
+export const isSpy = (game: IGame, user: User) => {
+	const registration = game.players.find(({ player }) => player._id === user._id);
+
+	return registration && registration.gameRole === "Spy";
+};

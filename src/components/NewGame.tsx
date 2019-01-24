@@ -35,7 +35,7 @@ export const NewGame = () => {
 	};
 
 	if (id) {
-		return <Redirect to={`/game/${id}`} />;
+		return <Redirect to={`/${id}`} />;
 	}
 
 	return (
