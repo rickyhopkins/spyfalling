@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Game } from "./Game";
 import { List } from "@material-ui/core";
-import { useQuery } from "react-apollo-hooks";
-import { Queries } from "../gql";
+import { Subscriptions } from "../gql";
+import { useSubscription } from "../hooks/useSubscription";
+import { IGame } from "../models/Game";
 
-export const GameList = () => {
-	const res = useQuery<{ openGames: any[] }>(Queries.OPEN_GAMES);
+interface IProps {
+	games?: IGame[];
+}
 
-	const { data } = res;
+export const GameList = ({ games = [] }: IProps) => {
+	const [openGames, setOpenGames] = useState(games);
 
-	if (!data || !data.openGames) return null;
+	const onGameUpdated = ({ subscriptionData: { data } }: any) => {
+		console.log(data.openGames);
+		setOpenGames([...openGames, ...data.openGames]);
+	};
 
-	return <List>{data.openGames.map((game) => <Game game={game} />)}</List>;
+	useSubscription<{ openGames: IGame[] }>(Subscriptions.OPEN_GAMES, {
+		shouldResubscribe: false,
+		onSubscriptionData: onGameUpdated,
+	});
+
+	return <List>{openGames.map((game) => <Game game={game} />)}</List>;
 };

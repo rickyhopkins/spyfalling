@@ -12,6 +12,7 @@ interface IProps {
 }
 
 export const Game = ({ game }: IProps) => {
+	console.log(game);
 	const { user } = useContext(AuthenticationContext);
 	const joinGame = useMutation(Mutations.JOIN_GAME);
 	const [joined, setJoined] = useState(false);

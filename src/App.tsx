@@ -22,10 +22,10 @@ const theme = createMuiTheme({
 	},
 });
 
-const httpBase = new HttpLink({ uri: "https://spyfalling-server.herokuapp.com/graphql" });
+const httpBase = new HttpLink({ uri: `http://${process.env.REACT_APP_GQL_URL}graphql` });
 
 const wsBase = new WebSocketLink({
-	uri: "wss://spyfalling-server.herokuapp.com/graphql",
+	uri: `ws://${process.env.REACT_APP_GQL_URL}graphql`,
 	options: {
 		reconnect: false,
 		connectionParams: { authorization: localStorage.getItem("token") || null },

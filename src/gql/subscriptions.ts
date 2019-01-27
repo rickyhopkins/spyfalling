@@ -6,3 +6,9 @@ export const WATCH_GAME = gql`
 		gameUpdated(id: $id) ${fullGameSchema}
 	}
 `;
+
+export const OPEN_GAMES = gql`
+	subscription {
+        openGames ${fullGameSchema}
+	}
+`;
