@@ -15,6 +15,7 @@ export const fullGameSchema = `
 			player {
 				_id
 				name
+				avatar
 			}
 			role
 			score
